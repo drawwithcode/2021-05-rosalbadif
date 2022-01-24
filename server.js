@@ -30,7 +30,6 @@ let io = serverSocket(server);
 // when a new connection is opened from client
 io.on("connection", newConnection);
 
-
 // callback function: the paramenter (in this case socket)
 // will contain all the information on the new connection
 function newConnection(newSocket) {
@@ -39,22 +38,10 @@ function newConnection(newSocket) {
 
   // tell to all the others that a new user connected
   newSocket.on("mouse", incomingMouseMessage);
-  
-  let newColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-  //send the color to the client
-   io.to(newSocket.id).emit("welcome", newColor);
 
-   newSocket.broadcast.emit("newUser", { id: newSocket.id, color: newColor });
   // callback function run when the "mouse" message is received
-  
   function incomingMouseMessage(dataReceived) {
     // send it to all the clients
     newSocket.broadcast.emit("mouseBroadcast", dataReceived);
-    dataReceived.color = userColors[dataReceived.id];
   }
-}
-
-
-let userColors = {
-
 }

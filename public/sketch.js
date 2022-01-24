@@ -1,18 +1,10 @@
 // Create a new connection using socket.io (imported in index.html)
 // make sure you added the following line to index.html:
 // <script src="/socket.io/socket.io.js"></script>
-let clientSocket 
-
-function preolad() {
-  clientSocket = io()
-  clientSocket.on("connect", newConnection);
-  clientSocket.on("mouseBroadcast", otherMouse);
-  clientSocket.on("welcome", welcomeFunction);
-  clientSocket.on("newUser", welcomeNewUser);
-}
+let clientSocket = io();
 
 // define the function that will be called on a new newConnection
-
+clientSocket.on("connect", newConnection);
 
 // callback function for "connect" messages
 function newConnection() {
@@ -21,12 +13,12 @@ function newConnection() {
 
 // Define which function should be called when a new message
 // comes from the server with type "mouseBroadcast"
-
+clientSocket.on("mouseBroadcast", otherMouse);
 
 // Callback function called when a new message comes from the server
 // Data parameters will contain the received data
 function otherMouse(dataReceived) {
-  fill(dataReceived.color);
+  fill("yellow");
   circle(dataReceived.x, dataReceived.y, 20);
 }
 
@@ -55,16 +47,3 @@ function setup() {
 
 // draw the circle
 function draw() {}
-
-function welcomeFunction(data) {
-  myColor = data;
-  fill(myColor);
-  textAlign(CENTER);
-  text("Welcome " + clientSocket.id, width / 2, height / 2);
-}
-
-function welcomeNewUser(data) {
-  fill(data.color);
-  text("New user: " + data.id, width / 2, height / 2);
-}
-
