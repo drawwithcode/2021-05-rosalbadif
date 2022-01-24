@@ -25,9 +25,9 @@ function otherMouse(dataReceived) {
 
 // when the mouse is moved, draw it and send a message to the server
 function mouseMoved() {
-  noStroke()
-  fill("red");
-  circle(mouseX, mouseY, 10);
+  stroke("red")
+  //fill("red");
+  line(mouseX, mouseY, pmouseX, pmouseY);
 
   // create an object containing the mouse position
   let message = {
@@ -44,7 +44,7 @@ function mouseMoved() {
 // create the artboard
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(220);
+  background("white");
 }
 
 // draw the circle
