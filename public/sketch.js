@@ -25,7 +25,7 @@ function otherMouse(dataReceived) {
 
 // when the mouse is moved, draw it and send a message to the server
 function mouseMoved() {
-  stroke("red")
+  stroke("darkSlatePurple")
   //fill("red");
   line(mouseX, mouseY, pmouseX, pmouseY);
 
