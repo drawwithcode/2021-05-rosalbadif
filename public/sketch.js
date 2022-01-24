@@ -18,9 +18,9 @@ clientSocket.on("mouseBroadcast", otherMouse);
 // Callback function called when a new message comes from the server
 // Data parameters will contain the received data
 function otherMouse(dataReceived) {
-  noStroke()
-  fill("yellow");
-  circle(dataReceived.x, dataReceived.y, 20);
+  stroke("darkOrange")
+  //fill("yellow");
+  line(dataReceived.x, dataReceived.y );
 }
 
 // when the mouse is moved, draw it and send a message to the server
