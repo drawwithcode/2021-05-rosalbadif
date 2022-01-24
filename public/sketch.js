@@ -20,7 +20,7 @@ clientSocket.on("mouseBroadcast", otherMouse);
 function otherMouse(dataReceived) {
   stroke("darkOrange")
   //fill("yellow");
-  line(dataReceived.x, dataReceived.y );
+  line(dataReceived.x, dataReceived.y, dataReceived.m, dataReceived.n );
 }
 
 // when the mouse is moved, draw it and send a message to the server
@@ -34,6 +34,8 @@ function mouseMoved() {
     id: clientSocket.id,
     x: mouseX,
     y: mouseY,
+    m: pmouseX,
+    n: pmouseY,
   };
 
   // send the object to server,
