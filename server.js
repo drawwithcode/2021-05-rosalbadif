@@ -26,6 +26,9 @@ let serverSocket = require("socket.io");
 // create a socket connection
 let io = serverSocket(server);
 
+
+////////////
+
 // define which function should be called
 // when a new connection is opened from client
 io.on("connection", newConnection);
@@ -35,6 +38,8 @@ io.on("connection", newConnection);
 function newConnection(newSocket) {
   // log the connection in terminal
   console.log("new connection:", newSocket.id);
+  let clientFood = getRandomFood()
+  newsocket.emit("food", clientFood);
 
   // tell to all the others that a new user connected
   newSocket.on("mouse", incomingMouseMessage);
@@ -44,4 +49,12 @@ function newConnection(newSocket) {
     // send it to all the clients
     newSocket.broadcast.emit("mouseBroadcast", dataReceived);
   }
+}
+
+
+function getRandomFood(){
+  let possibleFoods = ["latte", "uova", "burro", "pane", "mela"];
+  let food = possibleFoods [Math.floor(Math.random()*possibleFoods.lenght)];
+  console.log ("i need:" + food)
+  return food;
 }
