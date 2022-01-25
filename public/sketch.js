@@ -1,13 +1,13 @@
 // Create a new connection using socket.io 
 let clientSocket = io();
 
-let latte = loadImage ("./assets/milk.png");
-let uova = loadImage ("./assets/egg.png");
-let burro = loadImage ("./assets/butter.png");
-let pane = loadImage ("./assets/bread.png");
-let mela = loadImage("./assets/apple.png");
+var latte 
+let uova 
+let burro 
+let pane 
+let mela 
 
-
+let myFood
 
 // define the function that will be called on a new newConnection
 clientSocket.on("connect", newConnection);
@@ -19,10 +19,15 @@ function newConnection() {
 
 clientSocket.on("food", setFood); //=when the "food" message is received from the server, execute setFood;
 function setFood(assignedFood) {  //(data from the message)
-  let myFood = loadImage("./assets/" + assignedFood + ".png");
+ myFood = loadImage("./assets/" + assignedFood + ".png");
 }
 
 function preload (){
+  latte = loadImage ("./assets/milk.png");
+  uova = loadImage ("./assets/egg.png");
+  burro = loadImage ("./assets/butter.png");
+  pane = loadImage ("./assets/bread.png");
+  mela = loadImage("./assets/apple.png");
   
 }
 
@@ -31,10 +36,10 @@ function preload (){
 clientSocket.on("mouseBroadcast", otherMouse);
 // Callback function called when a new message comes from the server
 // Data parameters will contain the received data
-// function otherMouse(dataReceived) {
-//   imageMode (CENTER)
-//   image(latte, dataReceived.x, dataReceived.y, 30, 30);
-// }
+function otherMouse(dataReceived) {
+  imageMode (CENTER)
+  image(latte, dataReceived.x, dataReceived.y, 30, 30);
+}
 
 
 
@@ -46,10 +51,10 @@ function setup() {
   push()
   let title = "your grocery list"
   fill("cornflowerBlue")
-  textSize (30)
+  textSize (40)
   textFont ("Amita")
   textAlign (CENTER)
-  text (title, width/2, height-700)
+  text (title, width/2, height-720)
   pop()
 
   push()
@@ -57,6 +62,13 @@ function setup() {
   textSize (20)
   textAlign (CENTER)
   text (list, width/2, height-50)
+  pop()
+
+  push()
+  fill("azure")
+  stroke("cornflowerBlue")
+  rectMode(CENTER)
+  rect(width/2, height/2, width/2+30, height/2+30)
   pop()
 }
 
@@ -67,7 +79,7 @@ function draw() {}
 // when the mouse is moved, draw it and send a message to the server
 function mousePressed() {
   imageMode (CENTER)
-  image (myFood, mouseX, mouseY, 30, 30)
+  image ("milk.png", mouseX, mouseY, 30, 30)
 
   // create an object containing the mouse position
   let message = {
