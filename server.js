@@ -38,8 +38,10 @@ io.on("connection", newConnection);
 function newConnection(newSocket) {
   // log the connection in terminal
   console.log("new connection:", newSocket.id);
+
+  
   let clientFood = getRandomFood()
-  newsocket.emit("food", clientFood);
+  newSocket.emit("food", clientFood);
 
   // tell to all the others that a new user connected
   newSocket.on("mouse", incomingMouseMessage);
