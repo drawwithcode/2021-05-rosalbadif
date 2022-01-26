@@ -21,14 +21,14 @@ function newConnection() { // callback function for "connect" messages
 // }
 
 //ESPERIMENTO FALLITO
-// function preload (){
-//   let milk = loadImage ("./assets/milk.png");
-//   let eggs = loadImage ("./assets/egg.png");
-//   let butter = loadImage ("./assets/butter.png");
-//   let bread = loadImage ("./assets/bread.png");
-//   let apple = loadImage("./assets/apple.png");
+function preload (){
+  let milk = loadImage ("./assets/milk.png");
+  let eggs = loadImage ("./assets/egg.png");
+  let butter = loadImage ("./assets/butter.png");
+  let bread = loadImage ("./assets/bread.png");
+  let apple = loadImage("./assets/apple.png");
   
-// }
+}
 
 
 // Define which function should be called when a new message
@@ -37,10 +37,10 @@ clientSocket.on("mouseBroadcast", otherMouse);
 // Callback function called when a new message comes from the server
 // Data parameters will contain the received data
 function otherMouse(dataReceived) {
-  // imageMode (CENTER)
-  // image(myFood, dataReceived.x, dataReceived.y, 30, 30);
-  stroke("cornflowerBlue")
-  line (dataReceived.x, dataReceived.y, dataReceived.m, dataReceived.n)
+  imageMode (CENTER)
+  image(myFood, dataReceived.x, dataReceived.y, 30, 30);
+  // stroke("cornflowerBlue")
+  // line (dataReceived.x, dataReceived.y, dataReceived.m, dataReceived.n)
 }
 
 
@@ -88,18 +88,18 @@ function draw() {}
 
 // when the mouse is moved, draw it and send a message to the server
 function mousePressed() {
-  // imageMode (CENTER)
-  // image (myFood, mouseX, mouseY, 30, 30)
-  stroke ("blue")
-  line (mouseX, mouseY, pmouseX, pmouseY)
+  imageMode (CENTER)
+  image (myFood, mouseX, mouseY, 30, 30)
+  // stroke ("blue")
+  // line (mouseX, mouseY, pmouseX, pmouseY)
 
   // create an object containing the mouse position
   let message = {
     id: clientSocket.id,
     x: mouseX,
     y: mouseY,
-    m: pmouseX,
-    n: pmouseY,
+    // m: pmouseX,
+    // n: pmouseY,
   };
 
   // send the object to server,
@@ -117,17 +117,17 @@ function mousePressed() {
 //   clientSocket.emit("mouse", message);
 // }
 
-// function keyPressed() {
-//   console.log(key);
-//   if(key === "l"){
-//     myFood = latte;
-//   } if (key === "u") {
-//     myFood = uova;
-//   } if (key === "b") {
-//     myFood = burro;
-//   } if (key === "p") {
-//     myFood = pane;
-//   } if (key === "m") {
-//     myFood = mela;
-//   }
-// }
+function keyPressed() {
+  console.log(key);
+  if(key === "l"){
+    myFood = latte;
+  } if (key === "u") {
+    myFood = uova;
+  } if (key === "b") {
+    myFood = burro;
+  } if (key === "p") {
+    myFood = pane;
+  } if (key === "m") {
+    myFood = mela;
+  }
+}
