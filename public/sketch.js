@@ -59,8 +59,8 @@ clientSocket.on("mouseBroadcast", otherMouse);
 // Callback function called when a new message comes from the server
 // Data parameters will contain the received data
 function otherMouse(dataReceived) {
-  imageMode (CENTER)
-  image(myFood, dataReceived.x, dataReceived.y, 30, 30);
+  // imageMode (CENTER)
+  // image(myFood, dataReceived.x, dataReceived.y, 30, 30);
   // stroke("cornflowerBlue")
   // line (dataReceived.x, dataReceived.y, dataReceived.m, dataReceived.n)
 }
