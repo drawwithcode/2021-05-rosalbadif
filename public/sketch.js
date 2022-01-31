@@ -63,6 +63,8 @@ function otherMouse(dataReceived) {
   // image(myFood, dataReceived.x, dataReceived.y, 30, 30);
   // stroke("cornflowerBlue")
   // line (dataReceived.x, dataReceived.y, dataReceived.m, dataReceived.n)
+  imageMode (CENTER)
+  image (dataReceived.x, dataReceived.y, 30, 30)
 }
 
 
@@ -113,7 +115,7 @@ function draw() {}
 function mousePressed() {
   push()
   imageMode(CENTER)
-  image(myFood, mouseX, mouseY, 29, 29)
+  image(myFood, mouseX, mouseY, 30, 30)
   pop()
   // stroke ("blue")
   // line (mouseX, mouseY, pmouseX, pmouseY)
