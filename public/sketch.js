@@ -1,13 +1,13 @@
 // Create a new connection using socket.io 
 let clientSocket = io();
 
-// var latte 
-// let uova 
-// let burro 
-// let pane 
-// let mela 
+var latte 
+var uova 
+var burro 
+var pane 
+var mela 
 
-// let myFood
+var myFood
 
 // define the function that will be called on a new newConnection
 clientSocket.on("connect", newConnection);
@@ -15,18 +15,18 @@ function newConnection() { // callback function for "connect" messages
   console.log("your id:", clientSocket.id);
 }
 
-// clientSocket.on("food", setFood); //=when the "food" message is received from the server, execute setFood;
-// function setFood(assignedFood) {  //(data from the message)
-//  let myFood = loadImage("./assets/" + assignedFood + ".png");
-// }
+clientSocket.on("food", setFood); //=when the "food" message is received from the server, execute setFood;
+function setFood(assignedFood) {  //(data from the message)
+ myFood = loadImage("./assets/" + assignedFood + ".png");
+}
 
 //ESPERIMENTO FALLITO
 function preload (){
-  let milk = loadImage ("./assets/milk.png");
-  let eggs = loadImage ("./assets/egg.png");
-  let butter = loadImage ("./assets/butter.png");
-  let bread = loadImage ("./assets/bread.png");
-  let apple = loadImage("./assets/apple.png");
+  latte = loadImage ("./assets/milk.png");
+  uova = loadImage ("./assets/egg.png");
+  burro = loadImage ("./assets/butter.png");
+  pane = loadImage ("./assets/bread.png");
+  mela = loadImage("./assets/apple.png");
   
 }
 
