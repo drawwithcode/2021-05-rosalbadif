@@ -56,7 +56,7 @@ function newConnection(newSocket) {
 
 function getRandomFood(){
   let possibleFoods = ["latte", "uova", "burro", "pane", "mela"];
-  let food = possibleFoods [Math.floor(Math.random()*possibleFoods.lenght)];
+  let food = possibleFoods[Math.floor(Math.random()*possibleFoods.lenght)];
   console.log ("i need:" + food)
   return food;
 }

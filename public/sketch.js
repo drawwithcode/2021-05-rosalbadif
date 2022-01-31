@@ -8,6 +8,7 @@ var pane
 var mela 
 
 var myFood
+var message
 
 // define the function that will be called on a new newConnection
 clientSocket.on("connect", newConnection);
@@ -83,19 +84,19 @@ function setup() {
 }
 
 
-// draw the circle
+
 function draw() {}
 
-// when the mouse is moved, draw it and send a message to the server
+// when the mouse is moved or pressed, draw it and send a message to the server
 function mousePressed() {
   imageMode (CENTER)
-  image (myFood, mouseX, mouseY, 30, 30)
+  image (myFood, mouseX, mouseY, 29, 29)
   // stroke ("blue")
   // line (mouseX, mouseY, pmouseX, pmouseY)
 
   // create an object containing the mouse position
-  let message = {
-    id: clientSocket.id,
+ message = {
+    //id: clientSocket.id,
     x: mouseX,
     y: mouseY,
     // m: pmouseX,
@@ -107,15 +108,15 @@ function mousePressed() {
   clientSocket.emit("mouse", message);
 }
 
-// function mouseDragged() {
-//   imageMode(CENTER);
-//   image(myFood,mouseX,mouseY,29,29);
-//   message = {
-//     x: mouseX,
-//     y: mouseY,
-//   };
-//   clientSocket.emit("mouse", message);
-// }
+function mouseDragged() {
+  imageMode(CENTER);
+  image(myFood,mouseX,mouseY,29,29);
+  message = {
+    x: mouseX,
+    y: mouseY,
+  };
+  clientSocket.emit("mouse", message);
+}
 
 function keyPressed() {
   console.log(key);
