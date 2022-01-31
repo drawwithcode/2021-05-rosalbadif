@@ -6,8 +6,17 @@ var uova
 var burro 
 var pane 
 var mela 
+var sale
+var aglio
+var cipolla
+var carne
+var pasta
+var patate
+var insalata
+var vino
+var pomodoro
 
-var myFood
+var myFood 
 var message
 
 // define the function that will be called on a new newConnection
@@ -16,10 +25,11 @@ function newConnection() { // callback function for "connect" messages
   console.log("your id:", clientSocket.id);
 }
 
-clientSocket.on("food", setFood); //=when the "food" message is received from the server, execute setFood;
-function setFood(assignedFood) {  //(data from the message)
- myFood = loadImage("./assets/" + assignedFood + ".png");
-}
+// clientSocket.on("food", setFood); //=when the "food" message is received from the server, execute setFood;
+// function setFood(assignedFood) {  //(data from the message)
+//  myFood = loadImage("./assets/" + assignedFood + ".png");
+// }
+
 
 //ESPERIMENTO FALLITO
 function preload (){
@@ -28,7 +38,18 @@ function preload (){
   burro = loadImage ("./assets/butter.png");
   pane = loadImage ("./assets/bread.png");
   mela = loadImage("./assets/apple.png");
-  
+  sale = loadImage("./assets/salt.png");
+  aglio = loadImage("./assets/garlic.png");
+  cipolla = loadImage("./assets/onion.png");
+  carne = loadImage("./assets/meat.png");
+  pasta = loadImage("./assets/pasta.png");
+  patate = loadImage("./assets/potato.png");
+  insalata = loadImage("./assets/salad.png")
+  vino = loadImage("./assets/wine.png");
+  pomodoro = loadImage("./assets/tomato.png");
+
+
+  myFood = latte
 }
 
 
@@ -68,12 +89,13 @@ function setup() {
   text (subtitle, width/2, height-680)
   pop()
 
-  // push()
-  // let list = "What's missing today? \n [l]:🥛 [u]:🥚 [b]:🧈 [p]:🥖 \n[m]:🍎"
-  // textSize (20)
-  // textAlign (LEFT)
-  // text (list, 30, height-500)
-  // pop()
+  push()
+  let list = " [m]:🥛 \n [e]:🥚 \n [b]:🧈 \n [t]:🥖 \n[a]:🍎 \n[p]:🍝 \n[w]:🍷 \n[g]:🧄 \n[o]:🧅 \n[s]:🥬 \n[i]:🍅 \n[r]:🥔 \n[c]:🥩 "
+  fill("blue")
+  textSize (20)
+  textAlign (LEFT)
+  text (list, 30, height-600)
+  pop()
 
   push()
   fill("azure")
@@ -89,8 +111,10 @@ function draw() {}
 
 // when the mouse is moved or pressed, draw it and send a message to the server
 function mousePressed() {
-  imageMode (CENTER)
-  image (myFood, mouseX, mouseY, 29, 29)
+  push()
+  imageMode(CENTER)
+  image(myFood, mouseX, mouseY, 29, 29)
+  pop()
   // stroke ("blue")
   // line (mouseX, mouseY, pmouseX, pmouseY)
 
@@ -108,27 +132,43 @@ function mousePressed() {
   clientSocket.emit("mouse", message);
 }
 
-function mouseDragged() {
-  imageMode(CENTER);
-  image(myFood,mouseX,mouseY,29,29);
-  message = {
-    x: mouseX,
-    y: mouseY,
-  };
-  clientSocket.emit("mouse", message);
-}
+// function mouseDragged() {
+//   imageMode(CENTER);
+//   image(latte,mouseX,mouseY,29,29);
+//   message = {
+//     x: mouseX,
+//     y: mouseY,
+//   };
+//   clientSocket.emit("mouse", message);
+// }
 
 function keyPressed() {
   console.log(key);
-  if(key === "l"){
+  if(key === "m"){
     myFood = latte;
-  } if (key === "u") {
+  } if (key === "e") {
     myFood = uova;
   } if (key === "b") {
     myFood = burro;
-  } if (key === "p") {
+  } if (key === "t") {
     myFood = pane;
-  } if (key === "m") {
+  } if (key === "a") {
     myFood = mela;
+  } if (key=== "p") {
+    myFood = pasta;
+  } if (key==="w") {
+    myFood=vino;
+  } if (key==="g") {
+    myFood=aglio;
+  } if (key==="o") {
+    myFood=cipolla;
+  } if (key==="c") {
+    myFood=carne;
+  } if (key==="s") {
+    myFood = insalata;
+  } if (key==="r") {
+  myFood = patate
+  } if (key==="i") {
+    myFood= pomodoro
   }
 }

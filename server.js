@@ -40,8 +40,8 @@ function newConnection(newSocket) {
   console.log("new connection:", newSocket.id);
 
   
-  let clientFood = getRandomFood()
-  newSocket.emit("food", clientFood);
+  // let clientFood = getRandomFood()
+  // newSocket.emit("food", clientFood);
 
   // tell to all the others that a new user connected
   newSocket.on("mouse", incomingMouseMessage);
@@ -54,9 +54,9 @@ function newConnection(newSocket) {
 }
 
 
-function getRandomFood(){
-  let possibleFoods = ["latte", "uova", "burro", "pane", "mela"];
-  let food = possibleFoods[Math.floor(Math.random()*possibleFoods.lenght)];
-  console.log ("i need:" + food)
-  return food;
-}
+// function getRandomFood(){
+//   let possibleFoods = ["latte", "uova", "burro", "pane", "mela"];
+//   let food = possibleFoods[Math.floor(Math.random()*possibleFoods.lenght)];
+//   console.log ("i need:" + food)
+//   return food;
+// }
